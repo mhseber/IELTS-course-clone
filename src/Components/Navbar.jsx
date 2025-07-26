@@ -1,14 +1,35 @@
-import React from "react";
+"use client";
+
+import Link from "next/link";
+
+const NavOptions = (
+  <>
+    <li>
+      <Link href="#about">About</Link>
+    </li>
+    <li>
+      <Link href="#instructors">Instructors</Link>
+    </li>
+    <li>
+      <Link href="#features">Features</Link>
+    </li>
+    <li>
+      <Link href="#contact">Contact</Link>
+    </li>
+  </>
+);
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100">
+    <div className="fixed z-10 w-full px-4 py-3 text-black shadow-lg bg-opacity-30 backdrop-blur-md navbar bg-base-100">
+      {/* Navbar Start */}
       <div className="navbar-start">
+        {/* Mobile Dropdown */}
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5"
+              className="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -17,60 +38,37 @@ const Navbar = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
+                d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {NavOptions}
           </ul>
         </div>
-        <a className="text-xl btn btn-ghost">daisyUI</a>
+
+        <div className="flex items-center gap-3 ml-4">
+          <h1 className="font-extrabold tracking-tight lg:text-3xl">
+            IELTS-Course-Clone
+          </h1>
+        </div>
       </div>
+
+      {/* Navbar Center */}
       <div className="hidden navbar-center lg:flex">
-        <ul className="px-1 menu menu-horizontal">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+        <ul className="px-1 space-x-4 text-lg font-medium menu menu-horizontal">
+          {NavOptions}
         </ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+
+      {/* Navbar End */}
+      <div className="pr-6 navbar-end">
+        <Link href="/login" className="btn btn-primary">
+          Login
+        </Link>
       </div>
     </div>
   );
